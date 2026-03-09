@@ -1,0 +1,104 @@
+  [1m[35m (112.9ms)[0m  [1m[35mCREATE DATABASE "vending_machine_api_development" ENCODING = 'unicode' /*application='VendingMachineApi'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='VendingMachineApi'*/[0m
+  [1m[35m (171.4ms)[0m  [1m[35mCREATE DATABASE "vending_machine_api_development" ENCODING = 'unicode' /*application='VendingMachineApi'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='VendingMachineApi'*/[0m
+  [1m[35m (58.8ms)[0m  [1m[35mCREATE DATABASE "vending_machine_api_test" ENCODING = 'unicode' /*application='VendingMachineApi'*/[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='VendingMachineApi'*/[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='VendingMachineApi'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1376493434563412655) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-03-09 10:34:11.787057', '2026-03-09 10:34:11.787058') RETURNING "key" /*application='VendingMachineApi'*/[0m
+Migrating to CreateProducts (20260309082401)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying(200) NOT NULL, "stock" integer NOT NULL, "price" decimal(10,2) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260309082401') RETURNING "version" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+Migrating to CreateCoins (20260309082521)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "coins" ("id" bigserial primary key, "denomination" integer NOT NULL, "stock" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260309082521') RETURNING "version" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+Migrating to AddConstraintsToProducts (20260309084205)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_products_on_name" ON "products" ("name") /*application='VendingMachineApi'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE products ADD CONSTRAINT check_stock_positive CHECK (stock >= 0) /*application='VendingMachineApi'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE products ADD CONSTRAINT check_price_positive CHECK (price >= 0) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260309084205') RETURNING "version" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+Migrating to AddConstraintsToCoins (20260309085427)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_coins_on_denomination" ON "coins" ("denomination") /*application='VendingMachineApi'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE coins ADD CONSTRAINT check_stock_positive CHECK (stock >= 0) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260309085427') RETURNING "version" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1376493434563412655) /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Count (23.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Kit Kat') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Kit Kat', 1, 1.7, '2026-03-09 10:35:33.704846', '2026-03-09 10:35:33.704846') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Kinder Bueno') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Kinder Bueno', 1, 2.0, '2026-03-09 10:35:33.709983', '2026-03-09 10:35:33.709983') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Twix') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Twix', 1, 1.55, '2026-03-09 10:35:33.713023', '2026-03-09 10:35:33.713023') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Oreo') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Oreo', 1, 1.99, '2026-03-09 10:35:33.715746', '2026-03-09 10:35:33.715746') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Water (50cl)') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Water (50cl)', 1, 1.44, '2026-03-09 10:35:33.718300', '2026-03-09 10:35:33.718300') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Ice Tea') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Ice Tea', 1, 2.2, '2026-03-09 10:35:33.721041', '2026-03-09 10:35:33.721041') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Coca Cola') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Coca Cola', 1, 2.2, '2026-03-09 10:35:33.723809', '2026-03-09 10:35:33.723809') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Latte') LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Latte', 1, 2.13, '2026-03-09 10:35:33.726772', '2026-03-09 10:35:33.726772') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 1 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.6ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (1, 5, '2026-03-09 10:35:33.736268', '2026-03-09 10:35:33.736268') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 2 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (2, 5, '2026-03-09 10:35:33.739559', '2026-03-09 10:35:33.739559') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 5 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (5, 5, '2026-03-09 10:35:33.742247', '2026-03-09 10:35:33.742247') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 10 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (10, 5, '2026-03-09 10:35:33.744906', '2026-03-09 10:35:33.744906') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 20 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (20, 5, '2026-03-09 10:35:33.747533', '2026-03-09 10:35:33.747533') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 50 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (50, 5, '2026-03-09 10:35:33.750215', '2026-03-09 10:35:33.750215') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 100 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (100, 5, '2026-03-09 10:35:33.752919', '2026-03-09 10:35:33.752919') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = 200 LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES (200, 5, '2026-03-09 10:35:33.755506', '2026-03-09 10:35:33.755506') RETURNING "id" /*application='VendingMachineApi'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Count (21.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Load (1.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins" /* loading for pp */ LIMIT 11 /*application='VendingMachineApi'*/[0m
