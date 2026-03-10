@@ -174,15 +174,6 @@ Run `rails db:seed` for sample data:
 - **8 coin denominations** (full stock)
 - **5 sample products** (Coke, Water, Chips, Candy, Soda)
 
-## 🚀 Production
-
-```bash
-# RAILS_ENV=production bundle exec rails db:migrate
-# RAILS_ENV=production rails s -p 3000
-```
-
-**Heroku-ready** - just set `DATABASE_URL`.
-
 ***
 
 **✅ Ready to deploy!** Full CRUD + purchase flow + tests + error handling + pagination.
