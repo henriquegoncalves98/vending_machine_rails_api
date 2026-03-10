@@ -115,3 +115,11 @@ Migrating to AddConstraintsToCoins (20260309085427)
   [1m[36mCoin Pluck (0.6ms)[0m  [1m[34mSELECT "coins"."stock" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC /*application='VendingMachineApi'*/[0m
   [1m[36mProduct Load (20.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT 1 /*application='VendingMachineApi'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+Started GET "/" for 127.0.0.1 at 2026-03-10 10:05:43 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  
+NameError (uninitialized constant ApplicationController::MiscellaneousErrors):
+  
+app/controllers/application_controller.rb:2:in '<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in '<top (required)>'
+app/controllers/products_controller.rb:1:in '<top (required)>'
