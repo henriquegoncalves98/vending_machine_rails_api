@@ -11364,3 +11364,608 @@ Completed 404 Not Found in 0ms (Views: 0.0ms | ActiveRecord: 0.1ms (1 query, 0 c
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Juice"], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.6ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 100], ["stock", 10], ["created_at", "2026-03-10 10:26:28.441644"], ["updated_at", "2026-03-10 10:26:28.441644"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 5], ["created_at", "2026-03-10 10:26:28.443870"], ["updated_at", "2026-03-10 10:26:28.443870"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CoinsController#refill as JSON
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Update All (0.7ms)[0m  [1m[33mUPDATE "coins" SET "stock" = $1[0m  [["stock", 100]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "coins"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 100], ["stock", 10], ["created_at", "2026-03-10 10:26:28.460140"], ["updated_at", "2026-03-10 10:26:28.460140"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 5], ["created_at", "2026-03-10 10:26:28.461323"], ["updated_at", "2026-03-10 10:26:28.461323"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Load (0.5ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 535], ["LIMIT", 1]]
+Processing by CoinsController#refill as JSON
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Update All (0.3ms)[0m  [1m[33mUPDATE "coins" SET "stock" = $1[0m  [["stock", 100]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "coins"[0m
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 535], ["LIMIT", 1]]
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 100], ["stock", 10], ["created_at", "2026-03-10 10:26:28.469714"], ["updated_at", "2026-03-10 10:26:28.469714"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 5], ["created_at", "2026-03-10 10:26:28.470832"], ["updated_at", "2026-03-10 10:26:28.470832"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CoinsController#refill as JSON
+Completed 422 Unprocessable Content in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.3ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 100], ["stock", 10], ["created_at", "2026-03-10 10:26:28.478644"], ["updated_at", "2026-03-10 10:26:28.478644"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.3ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 5], ["created_at", "2026-03-10 10:26:28.479912"], ["updated_at", "2026-03-10 10:26:28.479912"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 539], ["LIMIT", 1]]
+Processing by CoinsController#refill as JSON
+Completed 422 Unprocessable Content in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."id" = $1 LIMIT $2[0m  [["id", 539], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 1"], ["LIMIT", 1]]
+  [1m[36mProduct Create (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 1"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.494420"], ["updated_at", "2026-03-10 10:26:28.494420"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 2"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 2"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.497749"], ["updated_at", "2026-03-10 10:26:28.497749"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 3"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 3"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.499114"], ["updated_at", "2026-03-10 10:26:28.499114"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#index as HTML
+  Parameters: {"page" => "1"}
+  [1m[36mProduct Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 50], ["OFFSET", 0]]
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 4"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 4"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.505651"], ["updated_at", "2026-03-10 10:26:28.505651"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 5"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 5"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.507344"], ["updated_at", "2026-03-10 10:26:28.507344"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 6"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 6"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.508680"], ["updated_at", "2026-03-10 10:26:28.508680"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 50], ["OFFSET", 0]]
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 7"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 7"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.513441"], ["updated_at", "2026-03-10 10:26:28.513441"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 8"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 8"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.514816"], ["updated_at", "2026-03-10 10:26:28.514816"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 9"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 9"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.516199"], ["updated_at", "2026-03-10 10:26:28.516199"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 50], ["OFFSET", 0]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 10"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 10"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.520197"], ["updated_at", "2026-03-10 10:26:28.520197"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 11"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 11"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.521580"], ["updated_at", "2026-03-10 10:26:28.521580"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 12"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 12"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.522875"], ["updated_at", "2026-03-10 10:26:28.522875"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#show as HTML
+  Parameters: {"id" => "1301"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1301], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 13"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 13"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.526994"], ["updated_at", "2026-03-10 10:26:28.526994"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 14"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 14"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.528300"], ["updated_at", "2026-03-10 10:26:28.528300"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 15"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 15"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.529520"], ["updated_at", "2026-03-10 10:26:28.529520"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#show as HTML
+  Parameters: {"id" => "0"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 16"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 16"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.532466"], ["updated_at", "2026-03-10 10:26:28.532466"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 17"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 17"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.533623"], ["updated_at", "2026-03-10 10:26:28.533623"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 18"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 18"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.534761"], ["updated_at", "2026-03-10 10:26:28.534761"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product" => {"name" => "Coke", "price" => "1.5", "stock" => "10"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Coke"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Coke"], ["stock", 10], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.536823"], ["updated_at", "2026-03-10 10:26:28.536823"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 1ms (Views: 0.1ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 19"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 19"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.539407"], ["updated_at", "2026-03-10 10:26:28.539407"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 20"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 20"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.540974"], ["updated_at", "2026-03-10 10:26:28.540974"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (11.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 21"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 21"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.553424"], ["updated_at", "2026-03-10 10:26:28.553424"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product" => {"name" => "", "price" => "-0.5", "stock" => "-1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 7ms (Views: 5.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.8ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 22"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 22"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.566324"], ["updated_at", "2026-03-10 10:26:28.566324"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 23"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 23"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.567666"], ["updated_at", "2026-03-10 10:26:28.567666"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 24"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 24"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.569555"], ["updated_at", "2026-03-10 10:26:28.569555"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product" => {"name" => "", "price" => "-0.5", "stock" => "-1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 1ms (Views: 0.4ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 25"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 25"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.574655"], ["updated_at", "2026-03-10 10:26:28.574655"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 26"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 26"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.576289"], ["updated_at", "2026-03-10 10:26:28.576289"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 27"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 27"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.577467"], ["updated_at", "2026-03-10 10:26:28.577467"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#update as HTML
+  Parameters: {"product" => {"name" => "Coke", "price" => "1.5", "stock" => "10"}, "id" => "0"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 28"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 28"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.580625"], ["updated_at", "2026-03-10 10:26:28.580625"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 29"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 29"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.581868"], ["updated_at", "2026-03-10 10:26:28.581868"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 30"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 30"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.583075"], ["updated_at", "2026-03-10 10:26:28.583075"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#update as HTML
+  Parameters: {"product" => {"name" => "Coke Zero", "price" => "1.8", "stock" => "20"}, "id" => "1320"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1320], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) AND "products"."id" != $2 LIMIT $3[0m  [["name", "Coke Zero"], ["id", 1320], ["LIMIT", 1]]
+  [1m[36mProduct Update (0.2ms)[0m  [1m[33mUPDATE "products" SET "name" = $1, "stock" = $2, "price" = $3, "updated_at" = $4 WHERE "products"."id" = $5[0m  [["name", "Coke Zero"], ["stock", 20], ["price", "1.8"], ["updated_at", "2026-03-10 10:26:28.585228"], ["id", 1320]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1320], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms (4 queries, 0 cached) | GC: 0.2ms)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1320], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 31"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 31"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.591889"], ["updated_at", "2026-03-10 10:26:28.591889"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 32"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 32"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.593388"], ["updated_at", "2026-03-10 10:26:28.593388"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 33"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 33"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.594511"], ["updated_at", "2026-03-10 10:26:28.594511"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#update as HTML
+  Parameters: {"product" => {"name" => "", "price" => "-0.5", "stock" => "-1"}, "id" => "1323"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1323], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) AND "products"."id" != $2 LIMIT $3[0m  [["name", ""], ["id", 1323], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Content in 2ms (Views: 0.4ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1323], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 34"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 34"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.599540"], ["updated_at", "2026-03-10 10:26:28.599540"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 35"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 35"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.600785"], ["updated_at", "2026-03-10 10:26:28.600785"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 36"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 36"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.602143"], ["updated_at", "2026-03-10 10:26:28.602143"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id" => "1326"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1326], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 1326]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 1ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1326], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 37"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 37"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.608943"], ["updated_at", "2026-03-10 10:26:28.608943"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 38"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 38"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.610315"], ["updated_at", "2026-03-10 10:26:28.610315"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 39"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 39"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.611455"], ["updated_at", "2026-03-10 10:26:28.611455"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id" => "999"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 999], ["LIMIT", 1]]
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 40"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 40"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.614455"], ["updated_at", "2026-03-10 10:26:28.614455"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 41"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 41"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.615731"], ["updated_at", "2026-03-10 10:26:28.615731"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 42"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 42"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.617176"], ["updated_at", "2026-03-10 10:26:28.617176"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#refill as JSON
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Update All (0.4ms)[0m  [1m[33mUPDATE "products" SET "stock" = $1[0m  [["stock", 10]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 43"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 43"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.620839"], ["updated_at", "2026-03-10 10:26:28.620839"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 44"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 44"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.622164"], ["updated_at", "2026-03-10 10:26:28.622164"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 45"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 45"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.623433"], ["updated_at", "2026-03-10 10:26:28.623433"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1337], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1336], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1335], ["LIMIT", 1]]
+Processing by ProductsController#refill as JSON
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Update All (0.3ms)[0m  [1m[33mUPDATE "products" SET "stock" = $1[0m  [["stock", 10]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1335], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1336], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1337], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 46"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 46"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.629309"], ["updated_at", "2026-03-10 10:26:28.629309"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 47"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 47"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.630637"], ["updated_at", "2026-03-10 10:26:28.630637"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 48"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 48"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.631916"], ["updated_at", "2026-03-10 10:26:28.631916"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#refill as JSON
+Completed 422 Unprocessable Content in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 49"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 49"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.634865"], ["updated_at", "2026-03-10 10:26:28.634865"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 50"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 50"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.636260"], ["updated_at", "2026-03-10 10:26:28.636260"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 51"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 51"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.637620"], ["updated_at", "2026-03-10 10:26:28.637620"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1341], ["LIMIT", 1]]
+Processing by ProductsController#refill as JSON
+Completed 422 Unprocessable Content in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1341], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 52"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 52"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.641900"], ["updated_at", "2026-03-10 10:26:28.641900"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 53"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 53"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.643092"], ["updated_at", "2026-03-10 10:26:28.643092"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 54"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 54"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.644295"], ["updated_at", "2026-03-10 10:26:28.644295"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Sprite"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sprite"], ["stock", 2], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.645586"], ["updated_at", "2026-03-10 10:26:28.645586"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 10], ["created_at", "2026-03-10 10:26:28.646844"], ["updated_at", "2026-03-10 10:26:28.646844"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#purchase as HTML
+  Parameters: {"amount" => "2.0", "id" => "1347"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1347], ["LIMIT", 1]]
+  [1m[36mCoin Pluck (0.4ms)[0m  [1m[34mSELECT "coins"."denomination" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC[0m
+  [1m[36mCoin Pluck (0.3ms)[0m  [1m[34mSELECT "coins"."stock" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) AND "products"."id" != $2 LIMIT $3[0m  [["name", "Sprite"], ["id", 1347], ["LIMIT", 1]]
+  [1m[36mProduct Update (0.3ms)[0m  [1m[33mUPDATE "products" SET "stock" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["stock", 1], ["updated_at", "2026-03-10 10:26:28.651763"], ["id", 1347]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Update (0.2ms)[0m  [1m[33mUPDATE "coins" SET "stock" = $1, "updated_at" = $2 WHERE "coins"."id" = $3[0m  [["stock", 9], ["updated_at", "2026-03-10 10:26:28.657403"], ["id", 541]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1347], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 6.6ms (8 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 55"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 55"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.660638"], ["updated_at", "2026-03-10 10:26:28.660638"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 56"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 56"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.661952"], ["updated_at", "2026-03-10 10:26:28.661952"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 57"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 57"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.663173"], ["updated_at", "2026-03-10 10:26:28.663173"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Sprite"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sprite"], ["stock", 2], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.664356"], ["updated_at", "2026-03-10 10:26:28.664356"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 10], ["created_at", "2026-03-10 10:26:28.665519"], ["updated_at", "2026-03-10 10:26:28.665519"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#purchase as HTML
+  Parameters: {"amount" => "0.5", "id" => "1351"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1351], ["LIMIT", 1]]
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 58"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 58"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.668938"], ["updated_at", "2026-03-10 10:26:28.668938"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 59"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 59"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.670266"], ["updated_at", "2026-03-10 10:26:28.670266"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 60"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 60"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.671228"], ["updated_at", "2026-03-10 10:26:28.671228"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Sprite"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sprite"], ["stock", 2], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.672496"], ["updated_at", "2026-03-10 10:26:28.672496"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.4ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 10], ["created_at", "2026-03-10 10:26:28.673709"], ["updated_at", "2026-03-10 10:26:28.673709"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) AND "products"."id" != $2 LIMIT $3[0m  [["name", "Sprite"], ["id", 1355], ["LIMIT", 1]]
+  [1m[36mProduct Update (0.8ms)[0m  [1m[33mUPDATE "products" SET "stock" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["stock", 0], ["updated_at", "2026-03-10 10:26:28.676665"], ["id", 1355]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#purchase as HTML
+  Parameters: {"amount" => "2.0", "id" => "1355"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1355], ["LIMIT", 1]]
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 61"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 61"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.681466"], ["updated_at", "2026-03-10 10:26:28.681466"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 62"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 62"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.682653"], ["updated_at", "2026-03-10 10:26:28.682653"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 63"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 63"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.683780"], ["updated_at", "2026-03-10 10:26:28.683780"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Sprite"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sprite"], ["stock", 2], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.685039"], ["updated_at", "2026-03-10 10:26:28.685039"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.3ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 10], ["created_at", "2026-03-10 10:26:28.686320"], ["updated_at", "2026-03-10 10:26:28.686320"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#purchase as HTML
+  Parameters: {"amount" => "5.0", "id" => "1359"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1359], ["LIMIT", 1]]
+Completed 422 Unprocessable Content in 0ms (Views: 0.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 64"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 64"], ["stock", 1], ["price", "2.2"], ["created_at", "2026-03-10 10:26:28.689784"], ["updated_at", "2026-03-10 10:26:28.689784"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 65"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 65"], ["stock", 5], ["price", "1.44"], ["created_at", "2026-03-10 10:26:28.691232"], ["updated_at", "2026-03-10 10:26:28.691232"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Product 66"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Product 66"], ["stock", 0], ["price", "1.0"], ["created_at", "2026-03-10 10:26:28.692504"], ["updated_at", "2026-03-10 10:26:28.692504"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Sprite"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sprite"], ["stock", 2], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.693795"], ["updated_at", "2026-03-10 10:26:28.693795"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 50], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 50], ["stock", 10], ["created_at", "2026-03-10 10:26:28.695141"], ["updated_at", "2026-03-10 10:26:28.695141"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ProductsController#purchase as HTML
+  Parameters: {"amount" => "2.0", "id" => "0"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoin Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoin Exists? (7.5ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mCoin Create (0.2ms)[0m  [1m[32mINSERT INTO "coins" ("denomination", "stock", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["denomination", 100], ["stock", 50], ["created_at", "2026-03-10 10:26:28.708175"], ["updated_at", "2026-03-10 10:26:28.708175"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoin Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoin Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 0], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoin Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoin Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coins" WHERE "coins"."denomination" = $1 LIMIT $2[0m  [["denomination", 100], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Coke"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Coke"], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Coke"], ["stock", 10], ["price", "1.5"], ["created_at", "2026-03-10 10:26:28.718742"], ["updated_at", "2026-03-10 10:26:28.718742"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "coke"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Water"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Water"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Juice"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER($1) LIMIT $2[0m  [["name", "Juice"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m

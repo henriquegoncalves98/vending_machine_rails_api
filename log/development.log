@@ -123,3 +123,349 @@ NameError (uninitialized constant ApplicationController::MiscellaneousErrors):
 app/controllers/application_controller.rb:2:in '<class:ApplicationController>'
 app/controllers/application_controller.rb:1:in '<top (required)>'
 app/controllers/products_controller.rb:1:in '<top (required)>'
+Started GET "/" for 127.0.0.1 at 2026-03-10 10:07:44 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+Processing by ProductsController#index as */*
+  [1m[36mProduct Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:17:in 'ProductsController#index'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT 50 OFFSET 0 /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:19:in 'ProductsController#index'
+Completed 200 OK in 52ms (Views: 4.7ms | ActiveRecord: 23.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2026-03-10 10:08:12 +0000
+Processing by ProductsController#index as */*
+  [1m[36mProduct Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:17:in 'ProductsController#index'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT 50 OFFSET 0 /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:19:in 'ProductsController#index'
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2026-03-10 10:08:35 +0000
+Processing by ProductsController#show as */*
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='show',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products?name=Fanta&stock=5&price=1.65" for 127.0.0.1 at 2026-03-10 10:10:31 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"name" => "Fanta", "stock" => "5", "price" => "1.65"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:92:in 'ProductsController#product_params'
+app/controllers/products_controller.rb:34:in 'ProductsController#create'
+Started POST "/products" for 127.0.0.1 at 2026-03-10 10:12:07 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"name" => "Fanta", "stock" => 5, "price" => 1.65, "product" => {"name" => "Fanta", "stock" => 5, "price" => 1.65}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mProduct Exists? (6.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta') LIMIT 1 /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mProduct Create (3.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "stock", "price", "created_at", "updated_at") VALUES ('Fanta', 5, 1.65, '2026-03-10 10:12:07.771331', '2026-03-10 10:12:07.771331') RETURNING "id" /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+Completed 201 Created in 31ms (Views: 0.6ms | ActiveRecord: 18.4ms (2 queries, 0 cached) | GC: 3.4ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2026-03-10 10:12:15 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"query" => "\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "product" => {}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:92:in 'ProductsController#product_params'
+app/controllers/products_controller.rb:34:in 'ProductsController#create'
+Started POST "/products" for 127.0.0.1 at 2026-03-10 10:12:25 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"name" => "Fanta", "stock" => 5, "price" => 1.65, "product" => {"name" => "Fanta", "stock" => 5, "price" => 1.65}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mProduct Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta') LIMIT 1 /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mROLLBACK /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+Completed 422 Unprocessable Content in 17ms (Views: 9.7ms | ActiveRecord: 3.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2026-03-10 10:12:42 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"name" => "Fanta1", "stock" => -1, "price" => -1.65, "product" => {"name" => "Fanta1", "stock" => -1, "price" => -1.65}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mProduct Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta1') LIMIT 1 /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+Completed 422 Unprocessable Content in 8ms (Views: 0.9ms | ActiveRecord: 3.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2026-03-10 10:12:50 +0000
+Processing by ProductsController#create as */*
+  Parameters: {"name" => "Fanta", "stock" => 5, "price" => 1.65, "product" => {"name" => "Fanta", "stock" => 5, "price" => 1.65}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mProduct Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta') LIMIT 1 /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in 'ProductsController#create'
+Completed 422 Unprocessable Content in 8ms (Views: 0.8ms | ActiveRecord: 2.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2026-03-10 10:13:32 +0000
+Processing by ProductsController#show as */*
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='show',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/9" for 127.0.0.1 at 2026-03-10 10:13:35 +0000
+Processing by ProductsController#show as */*
+  Parameters: {"id" => "9"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='show',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/products/9" for 127.0.0.1 at 2026-03-10 10:14:34 +0000
+Processing by ProductsController#update as */*
+  Parameters: {"name" => "Fanta Ananas", "stock" => 10, "price" => 1.85, "id" => "9", "product" => {"name" => "Fanta Ananas", "stock" => 10, "price" => 1.85}}
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Exists? (3.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta Ananas') AND "products"."id" != 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Update (3.0ms)[0m  [1m[33mUPDATE "products" SET "name" = 'Fanta Ananas', "stock" = 10, "price" = 1.85, "updated_at" = '2026-03-10 10:14:35.016003' WHERE "products"."id" = 9 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:45:in 'ProductsController#update'
+Completed 200 OK in 27ms (Views: 0.6ms | ActiveRecord: 8.5ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/products/9" for 127.0.0.1 at 2026-03-10 10:14:46 +0000
+Processing by ProductsController#update as */*
+  Parameters: {"name" => "Fanta Ananas", "stock" => 10, "price" => -1.85, "id" => "9", "product" => {"name" => "Fanta Ananas", "stock" => 10, "price" => -1.85}}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta Ananas') AND "products"."id" != 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+Completed 422 Unprocessable Content in 16ms (Views: 0.8ms | ActiveRecord: 6.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/products/9" for 127.0.0.1 at 2026-03-10 10:14:51 +0000
+Processing by ProductsController#update as */*
+  Parameters: {"name" => "Fanta Ananas", "stock" => 10, "price" => 1.85, "id" => "9", "product" => {"name" => "Fanta Ananas", "stock" => 10, "price" => 1.85}}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Fanta Ananas') AND "products"."id" != 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:44:in 'ProductsController#update'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='update',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:45:in 'ProductsController#update'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 3.8ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/products/10" for 127.0.0.1 at 2026-03-10 10:15:19 +0000
+Processing by ProductsController#destroy as */*
+  Parameters: {"id" => "10"}
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 10 LIMIT 1 /*action='destroy',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 6ms (Views: 0.3ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/products/9" for 127.0.0.1 at 2026-03-10 10:15:28 +0000
+Processing by ProductsController#destroy as */*
+  Parameters: {"id" => "9"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='destroy',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='destroy',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:52:in 'ProductsController#destroy'
+  [1m[36mProduct Destroy (2.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = 9 /*action='destroy',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:52:in 'ProductsController#destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*action='destroy',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:52:in 'ProductsController#destroy'
+Completed 204 No Content in 10ms (ActiveRecord: 4.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/9" for 127.0.0.1 at 2026-03-10 10:15:40 +0000
+Processing by ProductsController#show as */*
+  Parameters: {"id" => "9"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 9 LIMIT 1 /*action='show',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Filter chain halted as :set_product rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:16:53 +0000
+Processing by ProductsController#purchase as */*
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NameError (uninitialized constant ProductsController::MiscellaneousErrors)
+Caused by: NameError (uninitialized constant PurchaseItemService::MiscellaneousErrors)
+
+Information for: NameError (uninitialized constant ProductsController::MiscellaneousErrors):
+  
+app/controllers/products_controller.rb:60:in 'ProductsController#purchase'
+
+Information for cause: NameError (uninitialized constant PurchaseItemService::MiscellaneousErrors):
+  
+app/services/purchase_item_service.rb:3:in '<class:PurchaseItemService>'
+app/services/purchase_item_service.rb:2:in '<top (required)>'
+app/controllers/products_controller.rb:57:in 'ProductsController#purchase'
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:19:32 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  
+NameError (uninitialized constant MiscellaneousErrors):
+  
+app/controllers/application_controller.rb:2:in '<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in '<top (required)>'
+app/controllers/products_controller.rb:1:in '<top (required)>'
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:21:41 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  
+LoadError (cannot load such file -- miscellaneous_errors):
+  
+app/controllers/application_controller.rb:1:in '<top (required)>'
+app/controllers/products_controller.rb:1:in '<top (required)>'
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:22:50 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+Processing by ProductsController#purchase as */*
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 28.2ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+  
+NameError (uninitialized constant ProductsController::InvalidAmountSubmitted)
+Caused by: MiscellaneousErrors::InvalidAmountSubmitted (You didn't insert enough money)
+
+Information for: NameError (uninitialized constant ProductsController::InvalidAmountSubmitted):
+  
+app/controllers/products_controller.rb:60:in 'ProductsController#purchase'
+
+Information for cause: MiscellaneousErrors::InvalidAmountSubmitted (You didn't insert enough money):
+  
+app/services/purchase_item_service.rb:16:in 'PurchaseItemService#call'
+app/services/base_service.rb:8:in 'BaseService.call'
+app/controllers/products_controller.rb:57:in 'ProductsController#purchase'
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:23:29 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+Processing by ProductsController#purchase as */*
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 400 Bad Request in 44ms (Views: 0.2ms | ActiveRecord: 21.2ms (1 query, 0 cached) | GC: 2.4ms)
+
+
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:24:27 +0000
+Processing by ProductsController#purchase as */*
+  Parameters: {"amount" => 1.65, "id" => "1", "product" => {}}
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 400 Bad Request in 6ms (Views: 0.4ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:24:32 +0000
+Processing by ProductsController#purchase as */*
+  Parameters: {"amount" => 2.65, "id" => "1", "product" => {}}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+  [1m[36mCoin Pluck (5.5ms)[0m  [1m[34mSELECT "coins"."denomination" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:69:in 'PurchaseItemService#fetch_available_coins'
+  [1m[36mCoin Pluck (4.0ms)[0m  [1m[34mSELECT "coins"."stock" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:70:in 'PurchaseItemService#fetch_available_coins'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:29:in 'PurchaseItemService#decrement_stock'
+  [1m[36mProduct Exists? (16.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE LOWER("products"."name") = LOWER('Kit Kat') AND "products"."id" != 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:29:in 'PurchaseItemService#decrement_stock'
+  [1m[36mProduct Update (1.2ms)[0m  [1m[33mUPDATE "products" SET "stock" = 0, "updated_at" = '2026-03-10 10:24:32.514389' WHERE "products"."id" = 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:29:in 'PurchaseItemService#decrement_stock'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:29:in 'PurchaseItemService#decrement_stock'
+  [1m[36mCoin Load (0.9ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."denomination" = 50 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:37:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mCoin Update (0.5ms)[0m  [1m[33mUPDATE "coins" SET "stock" = 4, "updated_at" = '2026-03-10 10:24:32.555801' WHERE "coins"."id" = 6 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."denomination" = 20 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:37:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mCoin Update (2.1ms)[0m  [1m[33mUPDATE "coins" SET "stock" = 3, "updated_at" = '2026-03-10 10:24:32.562085' WHERE "coins"."id" = 5 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT "coins".* FROM "coins" WHERE "coins"."denomination" = 5 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:37:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mCoin Update (2.5ms)[0m  [1m[33mUPDATE "coins" SET "stock" = 4, "updated_at" = '2026-03-10 10:24:32.571105' WHERE "coins"."id" = 3 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/services/purchase_item_service.rb:38:in 'block in PurchaseItemService#decrement_coins'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:59:in 'ProductsController#purchase'
+Completed 200 OK in 127ms (Views: 0.2ms | ActiveRecord: 67.9ms (12 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products/1/purchase" for 127.0.0.1 at 2026-03-10 10:24:53 +0000
+Processing by ProductsController#purchase as */*
+  Parameters: {"amount" => 2.65, "id" => "1", "product" => {}}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='purchase',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:86:in 'ProductsController#set_product'
+Completed 400 Bad Request in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products/refill" for 127.0.0.1 at 2026-03-10 10:25:46 +0000
+Processing by ProductsController#refill as */*
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='refill',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:68:in 'block in ProductsController#refill'
+  [1m[36mProduct Update All (2.4ms)[0m  [1m[33mUPDATE "products" SET "stock" = 10 /*action='refill',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:68:in 'block in ProductsController#refill'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='refill',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:67:in 'ProductsController#refill'
+  [1m[36mProduct Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*action='refill',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:74:in 'ProductsController#refill'
+Completed 200 OK in 13ms (Views: 0.7ms | ActiveRecord: 4.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2026-03-10 10:25:58 +0000
+Processing by ProductsController#index as */*
+  [1m[36mProduct Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:17:in 'ProductsController#index'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products"."id", "products"."name", "products"."price", "products"."stock" FROM "products" ORDER BY "products"."name" ASC LIMIT 50 OFFSET 0 /*action='index',application='VendingMachineApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:19:in 'ProductsController#index'
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+

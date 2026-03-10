@@ -57,9 +57,9 @@ class ProductsController < ApplicationController
     change = PurchaseItemService.call(@product, params[:amount])
 
     render json: { change: , total_change: change.reduce(:+), stock: @product.reload.stock }
-  rescue MiscellaneousErrors::InvalidAmountSubmitted, MiscellaneousErrors::ProductOutOfStock => e
+  rescue InvalidAmountSubmitted, ProductOutOfStock => e
     render json: { error: e.message }, status: :bad_request
-  rescue MiscellaneousErrors::NotEnoughChange, StandardError => e
+  rescue NotEnoughChange, StandardError => e
     render json: { error: e.message }, status: :unprocessable_content
   end
 
