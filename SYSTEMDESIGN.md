@@ -1,19 +1,24 @@
 ## REQUIREMENTS
 
-1. Get all products available and out of stock with correspondent prices
+1. Get all products available and out of stock with corresponding prices
 2. Fetch one product with all information on it
-3. Select a product and insert X amount - Ask for more money if not enough - Return change if too much provided - Accept coins in denominations 1p, 2p, 5p, 10p, 20p, 50p, £1, £2 and accumulate the inserted amount. Return product
-4. Ability to refill products in machine
-5. Ability to refill change in machine
-6. Ability do edit a product
+3. Select a product and insert X amount
+    - Ask for more money if not enough
+    - Return change if too much is provided
+    - Accept coins in denominations 1p, 2p, 5p, 10p, 20p, 50p, £1, £2 and accumulate the inserted amount then return product with/o change
+4. Ability to refill products in the machine
+5. Ability to refill the change in the machine
+6. Ability to edit a product
 7. Ability to add a new product
-8. Ability do delete a product
+8. Ability to delete a product
 
+### Validations
+    When a product is fetched or selected with X amount, these validations must be done: 
+    - Check if the product selected is valid (exists in DB?)
+    - If there is enough product stock
+    - When trying to return change if there isn’t enough change available in the machine, deny buy and return coins
 
-When a product is fetched or selected with X amount these validations must be done: - Check if product selected is valid
-- If there is enough stock and valid for sale
-- When trying to return change if there isn’t enough change available in machine, deny buy and return coins
-
+### API sketch
 
 - 1)GET /products  —> products#index
 - 2)GET /products/:id  —> products#show
