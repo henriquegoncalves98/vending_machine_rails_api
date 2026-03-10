@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show update destroy purchase]
 
   def index
-    page = (params[:page] || 1).to_i
+    page = 1 if params[:page].to_i <= 0
     per_page = 50
     offset = (page - 1) * per_page
 
