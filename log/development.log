@@ -102,3 +102,15 @@ Migrating to AddConstraintsToCoins (20260309085427)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='VendingMachineApi'*/[0m
   [1m[36mProduct Count (21.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" /*application='VendingMachineApi'*/[0m
   [1m[36mCoin Load (1.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins" /* loading for pp */ LIMIT 11 /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Count (23.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "coins" /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT "coins".* FROM "coins" ORDER BY "coins"."id" ASC LIMIT 1 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT "coins"."denomination", "coins"."stock" FROM "coins" WHERE (stock > 0) /* loading for pp */ ORDER BY "coins"."denomination" ASC LIMIT 11 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT "coins"."denomination", "coins"."stock" FROM "coins" WHERE (stock > 0) /* loading for pp */ ORDER BY "coins"."denomination" ASC LIMIT 11 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Pluck (0.6ms)[0m  [1m[34mSELECT "coins"."denomination" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" ASC /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT "coins"."denomination", "coins"."stock" FROM "coins" WHERE (stock > 0) /* loading for pp */ ORDER BY "coins"."denomination" DESC LIMIT 11 /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Pluck (0.7ms)[0m  [1m[34mSELECT "coins"."denomination" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC /*application='VendingMachineApi'*/[0m
+  [1m[36mCoin Pluck (0.6ms)[0m  [1m[34mSELECT "coins"."stock" FROM "coins" WHERE (stock > 0) ORDER BY "coins"."denomination" DESC /*application='VendingMachineApi'*/[0m
+  [1m[36mProduct Load (20.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT 1 /*application='VendingMachineApi'*/[0m
